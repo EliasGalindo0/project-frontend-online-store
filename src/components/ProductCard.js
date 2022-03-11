@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class ProductCard extends React.Component {
   render() {
@@ -15,3 +16,9 @@ export default class ProductCard extends React.Component {
     );
   }
 }
+
+ProductCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+};
