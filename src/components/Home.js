@@ -10,7 +10,7 @@ export default class Home extends React.Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h1>
         <Link
-          to="/shopingCart"
+          to="/shoppingcart"
           data-testid="shopping-cart-button"
         >
           <button type="button">

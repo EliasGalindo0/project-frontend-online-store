@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class shopingCart extends React.Component {
+export default class Shoppingcart extends React.Component {
   render() {
     return (
       <h1 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h1>
