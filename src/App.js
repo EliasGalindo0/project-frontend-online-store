@@ -5,7 +5,6 @@ import Home from './components/Home';
 import Shoppingcart from './components/Shoppingcart';
 
 function App() {
-  // api.getCategories().then((categories) => { console.log(categories); });
   return (
     <BrowserRouter>
       <Switch>
