@@ -37,12 +37,29 @@ export default class Home extends React.Component {
     this.setState({
       searchProduct: value,
     });
-    console.log(value);
+    // console.log(value);
+  }
+
+  filterProductsCategory = ({ target }) => {
+    this.filterProductsById(target);
+  }
+
+  async filterProductsById(target) {
+    // const { productsList } = this.state;
+    const products = await api.getProductsFromCategoryAndQuery(target.value);
+    // console.log(products.results);
+    this.setState({ productsList: products.results });
+    // then(this.setState({ productsList: products.results }));
   }
 
   render() {
-    const { searchProduct, productsList, showSearchResults, category } = this.state;
-    console.log(productsList);
+    const {
+      searchProduct,
+      productsList,
+      showSearchResults,
+      category,
+    } = this.state;
+    // console.log(productsList);
     return (
       <div>
         <Link
@@ -59,7 +76,13 @@ export default class Home extends React.Component {
         </h2>
         {category.map((item) => (
           <label htmlFor={ item.id } data-testid="category" key={ item.id }>
-            <input id={ item.id } type="radio" value={ item.name } name="category" />
+            <input
+              id={ item.id }
+              type="radio"
+              onChange={ this.filterProductsCategory }
+              value={ item.id }
+              name="category"
+            />
             {item.name}
           </label>
         ))}
