@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as api from '../services/api';
 import ProductCard from './ProductCard';
 
@@ -9,7 +10,14 @@ export default class Home extends React.Component {
       searchProduct: '',
       productsList: [],
       showSearchResults: false,
+      category: [],
     };
+  }
+
+  componentDidMount() {
+    api.getCategories().then((categories) => {
+      this.setState({ category: categories });
+    });
   }
 
   // Função que consulta a API e guarda o resultado no estado do componente
@@ -33,13 +41,28 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const { searchProduct, productsList, showSearchResults } = this.state;
+    const { searchProduct, productsList, showSearchResults, category } = this.state;
     console.log(productsList);
     return (
       <div>
-        <h1 data-testid="home-initial-message">
+        <Link
+          to="/shoppingcart"
+          data-testid="shopping-cart-button"
+        >
+          <button type="button">
+            carrinho
+          </button>
+        </Link>
+        <input type="text" />
+        <h2 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
-        </h1>
+        </h2>
+        {category.map((item) => (
+          <label htmlFor={ item.id } data-testid="category" key={ item.id }>
+            <input id={ item.id } type="radio" value={ item.name } name="category" />
+            {item.name}
+          </label>
+        ))}
         <input
           data-testid="query-input"
           type="text"
