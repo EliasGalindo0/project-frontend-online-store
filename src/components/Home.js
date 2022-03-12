@@ -47,7 +47,7 @@ export default class Home extends React.Component {
   async filterProductsById(target) {
     // const { productsList } = this.state;
     const products = await api.getProductsFromCategoryAndQuery(target.value);
-    // console.log(products.results);
+    console.log(products.results);
     this.setState({ productsList: products.results });
     // then(this.setState({ productsList: products.results }));
   }
@@ -109,6 +109,7 @@ export default class Home extends React.Component {
           .map((produto) => (<ProductCard
             data-testid="product"
             key={ produto.id }
+            id={ produto.id }
             title={ produto.title }
             price={ produto.price }
             thumbnail={ produto.thumbnail }
