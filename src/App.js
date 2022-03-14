@@ -15,15 +15,26 @@ export default class App extends React.Component {
   }
 
   addtoCart = (event, detailsObject) => {
-    this.setState((prevState) => ({
-      cart: prevState.cart + 1,
-      productDetailsList: [...prevState.productDetailsList, detailsObject],
-    }));
+    console.log(detailsObject);
+    const { productDetailsList } = this.state;
+    const elem = productDetailsList.some((item) => detailsObject.id === item.id);
+    console.log(elem);
+    if (!elem) {
+      this.setState((prevState) => ({
+        cart: 1,
+        productDetailsList: [...prevState.productDetailsList, detailsObject],
+      }));
+    }
+    //  else {
+    //   this.setState((prevState) => ({
+    //     cart2: prevState.cart2 + 1,
+    //   }));
+    // }
   }
 
   render() {
-    const { title, cart } = this.state;
-    // console.log(title);
+    const { title, cart, productDetailsList } = this.state;
+    console.log(cart);
     // console.log(cart);
     return (
       <BrowserRouter>
@@ -31,7 +42,10 @@ export default class App extends React.Component {
           <Route exact path="/" component={ Home } />
           <Route
             path="/shoppingcart"
-            render={ () => <Shoppingcart productDetailsList={ productDetailsList } cart={ cart } /> }
+            render={ () => (<Shoppingcart
+              productDetailsList={ productDetailsList }
+              cart={ cart }
+            />) }
           />
           <Route
             path="/:id"

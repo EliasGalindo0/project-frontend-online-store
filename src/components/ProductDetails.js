@@ -8,7 +8,8 @@ export default class ProductDetails extends React.Component {
     this.state = {
       productDetails: [],
       detailsLoaded: false,
-      cart: '',
+      cart2: 0,
+      cart: 0,
     };
   }
 
@@ -34,11 +35,21 @@ export default class ProductDetails extends React.Component {
   render() {
     const estado = this.state;
     const { title, thumbnail, price, attributes } = estado.productDetails;
-    const { detailsLoaded, cart, productDetails } = this.state;
+    const { detailsLoaded, cart2, productDetails } = this.state;
     // console.log(productDetails);
     const { addtoCart } = this.props;
     return (
       <div>
+        <Link
+          to="/shoppingcart"
+        >
+          <button
+            type="button"
+            data-testid="shopping-cart-button"
+          >
+            carrinho
+          </button>
+        </Link>
         <h4 data-testid="product-detail-name">{title}</h4>
         <img src={ thumbnail } alt={ title } />
         <p>
@@ -60,12 +71,11 @@ export default class ProductDetails extends React.Component {
               <button
                 type="button"
                 data-testid="product-detail-add-to-cart"
-                onClick={ (event) => { addtoCart(event, productDetails); } }
+                onClick={ (event) => { addtoCart(event, productDetails, cart2); } }
               >
                 Add to cart
               </button>
             </div>)}
-        <Link to={"/shoppingcart"}>Shopping Cart</Link>
       </div>
     );
   }

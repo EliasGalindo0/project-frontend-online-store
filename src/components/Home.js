@@ -11,7 +11,6 @@ export default class Home extends React.Component {
       productsList: [],
       showSearchResults: false,
       category: [],
-      cart: '',
     };
   }
 
@@ -65,9 +64,11 @@ export default class Home extends React.Component {
       <div>
         <Link
           to="/shoppingcart"
-          data-testid="shopping-cart-button"
         >
-          <button type="button">
+          <button
+            type="button"
+            data-testid="shopping-cart-button"
+          >
             carrinho
           </button>
         </Link>
