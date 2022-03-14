@@ -31,24 +31,11 @@ export default class ProductDetails extends React.Component {
     return data;
   }
 
-  // função atualiza o estado title
-  // addToCart = ({ target }) => {
-  //   // console.log(target);
-  //   const estado = this.state;
-  //   const { title } = estado.productDetails;
-  //   // console.log(title);
-  //   this.setState({ cart: title });
-  // }
-
-  render(props) {
-    // console.log(props); // recebe undefined pq?
+  render() {
     const estado = this.state;
     const { title, thumbnail, price, attributes } = estado.productDetails;
-    const { detailsLoaded, cart } = this.state;
+    const { detailsLoaded, cart, productDetails } = this.state;
     const { addtoCart } = this.props;
-    // console.log(addtoCart);
-    // console.log(cart);
-    // console.log(detailsLoaded);
     return (
       <div>
         <h4 data-testid="product-detail-name">{title}</h4>
