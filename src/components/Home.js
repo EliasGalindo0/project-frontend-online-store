@@ -47,7 +47,7 @@ export default class Home extends React.Component {
   async filterProductsById(target) {
     // const { productsList } = this.state;
     const products = await api.getProductsFromCategoryAndQuery(target.value);
-    console.log(products.results);
+    // console.log(products.results);
     this.setState({ productsList: products.results });
     // then(this.setState({ productsList: products.results }));
   }
@@ -64,9 +64,11 @@ export default class Home extends React.Component {
       <div>
         <Link
           to="/shoppingcart"
-          data-testid="shopping-cart-button"
         >
-          <button type="button">
+          <button
+            type="button"
+            data-testid="shopping-cart-button"
+          >
             carrinho
           </button>
         </Link>

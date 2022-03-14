@@ -1,4 +1,6 @@
 import React from 'react';
+import Shoppingcart from './Shoppingcart';
+import { Link } from 'react-router-dom';
 
 export default class ProductDetails extends React.Component {
   constructor() {
@@ -6,15 +8,17 @@ export default class ProductDetails extends React.Component {
     this.state = {
       productDetails: [],
       detailsLoaded: false,
+      cart2: 0,
+      cart: 0,
     };
   }
 
   // Coloquei o componentDidMount como async pra ele poder esperar pela requisição da API
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    console.log(id);
+    // console.log(id);
     const detailsObject = await this.getProductDetails(id);
-    console.log(detailsObject);
+    // console.log(detailsObject);
     this.setState({
       productDetails: detailsObject,
       detailsLoaded: true,
@@ -29,12 +33,23 @@ export default class ProductDetails extends React.Component {
   }
 
   render() {
-    const { title, thumbnail, price, attributes } = this.state.productDetails;
-    const { detailsLoaded } = this.state;
-    console.log(attributes);
-    console.log(detailsLoaded);
+    const estado = this.state;
+    const { title, thumbnail, price, attributes } = estado.productDetails;
+    const { detailsLoaded, cart2, productDetails } = this.state;
+    // console.log(productDetails);
+    const { addtoCart } = this.props;
     return (
       <div>
+        <Link
+          to="/shoppingcart"
+        >
+          <button
+            type="button"
+            data-testid="shopping-cart-button"
+          >
+            carrinho
+          </button>
+        </Link>
         <h4 data-testid="product-detail-name">{title}</h4>
         <img src={ thumbnail } alt={ title } />
         <p>
@@ -44,14 +59,23 @@ export default class ProductDetails extends React.Component {
         Especificações técnicas:
         {detailsLoaded
           && (
-            <ul>
-              {attributes.map((attribute) => (
-                <li key={ attribute.name }>
-                  {attribute.name}
-                  :
-                  {attribute.value_name}
-                </li>))}
-            </ul>)}
+            <div>
+              <ul>
+                {attributes.map((attribute) => (
+                  <li key={ attribute.name }>
+                    {attribute.name}
+                    :
+                    {attribute.value_name}
+                  </li>))}
+              </ul>
+              <button
+                type="button"
+                data-testid="product-detail-add-to-cart"
+                onClick={ (event) => { addtoCart(event, productDetails, cart2); } }
+              >
+                Add to cart
+              </button>
+            </div>)}
       </div>
     );
   }
