@@ -23,8 +23,8 @@ export default class App extends React.Component {
 
   render() {
     const { title, cart } = this.state;
-    console.log(title);
-    console.log(cart);
+    // console.log(title);
+    // console.log(cart);
     return (
       <BrowserRouter>
         <Switch>
