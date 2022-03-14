@@ -10,28 +10,28 @@ export default class App extends React.Component {
     super();
     this.state = {
       cart: 0,
-      title: [],
+      productDetailsList: [],
     };
   }
 
-  addtoCart = (event, title) => {
+  addtoCart = (event, detailsObject) => {
     this.setState((prevState) => ({
       cart: prevState.cart + 1,
-      title: [...prevState.title, title],
+      productDetailsList: [...prevState.productDetailsList, detailsObject],
     }));
   }
 
   render() {
-    const { title, cart } = this.state;
-    console.log(title);
-    console.log(cart);
+    const { productDetailsList, cart } = this.state;
+    console.log(productDetailsList);
+    console.log('carrinho: ', cart);
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ Home } />
           <Route
             path="/shoppingcart"
-            render={ () => <Shoppingcart title={ title } cart={ cart } /> }
+            render={ () => <Shoppingcart productDetailsList={ productDetailsList } cart={ cart } /> }
           />
           <Route
             path="/:id"
