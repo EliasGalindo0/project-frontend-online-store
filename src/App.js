@@ -4,6 +4,7 @@ import './App.css';
 import Home from './components/Home';
 import ProductDetails from './components/ProductDetails';
 import Shoppingcart from './components/Shoppingcart';
+// import { getProductDetails } from '../services/api';
 
 export default class App extends React.Component {
   constructor() {
@@ -25,11 +26,6 @@ export default class App extends React.Component {
         productDetailsList: [...prevState.productDetailsList, detailsObject],
       }));
     }
-    //  else {
-    //   this.setState((prevState) => ({
-    //     cart2: prevState.cart2 + 1,
-    //   }));
-    // }
   }
 
   render() {
