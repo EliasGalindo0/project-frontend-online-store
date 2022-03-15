@@ -39,7 +39,11 @@ export default class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={ Home } />
+          <Route
+            exact
+            path="/"
+            render={ () => (<Home addtoCart={ this.addtoCart } />) }
+          />
           <Route
             path="/shoppingcart"
             render={ () => (<Shoppingcart

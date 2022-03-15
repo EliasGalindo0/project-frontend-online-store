@@ -25,10 +25,9 @@ export default class Shoppingcart extends React.Component {
       <div>
         <div>
           {shoppingCartList.map((item) => (
-            <>
+            <div key={ item.id }>
               <p
                 data-testid="shopping-cart-product-name"
-                key={ item.id }
                 quantity={ qt }
               >
                 Nome:
@@ -38,12 +37,11 @@ export default class Shoppingcart extends React.Component {
                 Quantidade:
                 {qt}
               </p>
-            </>
+            </div>
           ))}
         </div>
         <h1 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h1>
       </div>
-
     );
   }
 }
