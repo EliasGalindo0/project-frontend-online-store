@@ -59,6 +59,8 @@ export default class Home extends React.Component {
       showSearchResults,
       category,
     } = this.state;
+    const { addtoCart } = this.props;
+    // console.log(addtoCart);
     // console.log(productsList);
     return (
       <div>
@@ -115,6 +117,7 @@ export default class Home extends React.Component {
             title={ produto.title }
             price={ produto.price }
             thumbnail={ produto.thumbnail }
+            addtoCart={ addtoCart }
           />))}
       </div>
     );

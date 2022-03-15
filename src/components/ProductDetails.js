@@ -1,6 +1,6 @@
 import React from 'react';
-import Shoppingcart from './Shoppingcart';
 import { Link } from 'react-router-dom';
+import { getProductDetails } from '../services/api';
 
 export default class ProductDetails extends React.Component {
   constructor() {
@@ -9,7 +9,7 @@ export default class ProductDetails extends React.Component {
       productDetails: [],
       detailsLoaded: false,
       cart2: 0,
-      cart: 0,
+      // cart: 0,
     };
   }
 
@@ -17,7 +17,7 @@ export default class ProductDetails extends React.Component {
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
     // console.log(id);
-    const detailsObject = await this.getProductDetails(id);
+    const detailsObject = await getProductDetails(id);
     // console.log(detailsObject);
     this.setState({
       productDetails: detailsObject,
@@ -26,11 +26,11 @@ export default class ProductDetails extends React.Component {
   }
 
   // Essa função faz a requisição pros detalhes do produto. Deixei aqui pra ficar mais claro o processo, depois podemos colocar ela em api.js
-  getProductDetails = async (id) => {
-    const response = await fetch(`https://api.mercadolibre.com/items/${id}`);
-    const data = await response.json();
-    return data;
-  }
+  // getProductDetails = async (id) => {
+  //   const response = await fetch(`https://api.mercadolibre.com/items/${id}`);
+  //   const data = await response.json();
+  //   return data;
+  // }
 
   render() {
     const estado = this.state;
