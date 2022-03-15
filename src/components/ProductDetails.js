@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getProductDetails } from '../services/api';
 
 export default class ProductDetails extends React.Component {
@@ -33,6 +34,7 @@ export default class ProductDetails extends React.Component {
   // }
 
   render() {
+    // console.log(this.props);
     const estado = this.state;
     const { title, thumbnail, price, attributes } = estado.productDetails;
     const { detailsLoaded, cart2, productDetails } = this.state;
@@ -80,3 +82,8 @@ export default class ProductDetails extends React.Component {
     );
   }
 }
+
+ProductDetails.propTypes = {
+  addtoCart: PropTypes.func.isRequired,
+  match: PropTypes.objectOf(PropTypes.any.isRequired).isRequired,
+};

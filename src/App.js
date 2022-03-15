@@ -15,10 +15,10 @@ export default class App extends React.Component {
   }
 
   addtoCart = (event, detailsObject) => {
-    console.log(detailsObject);
+    // console.log(detailsObject);
     const { productDetailsList } = this.state;
     const elem = productDetailsList.some((item) => detailsObject.id === item.id);
-    console.log(elem);
+    // console.log(elem);
     if (!elem) {
       this.setState((prevState) => ({
         cart: 1,
@@ -33,8 +33,8 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { title, cart, productDetailsList } = this.state;
-    console.log(cart);
+    const { cart, productDetailsList } = this.state;
+    // console.log(cart);
     // console.log(cart);
     return (
       <BrowserRouter>

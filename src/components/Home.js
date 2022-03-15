@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as api from '../services/api';
 import ProductCard from './ProductCard';
 
@@ -123,3 +124,7 @@ export default class Home extends React.Component {
     );
   }
 }
+
+Home.propTypes = {
+  addtoCart: PropTypes.func.isRequired,
+};

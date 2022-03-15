@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class Shoppingcart extends React.Component {
   constructor() {
@@ -58,3 +59,9 @@ export default class Shoppingcart extends React.Component {
 //     {qt}
 //   </p>
 // ))}
+
+Shoppingcart.propTypes = {
+  productDetailsList: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  cart: PropTypes.number.isRequired,
+
+};

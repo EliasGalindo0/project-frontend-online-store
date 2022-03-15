@@ -14,9 +14,9 @@ export default class ProductCard extends React.Component {
 
   async componentDidMount() {
     const { id } = this.props;
-    console.log(id);
+    // console.log(id);
     const detailsObject = await getProductDetails(id);
-    console.log(detailsObject);
+    // console.log(detailsObject);
     this.setState({
       productDetails: detailsObject,
     });
@@ -52,6 +52,7 @@ export default class ProductCard extends React.Component {
 }
 
 ProductCard.propTypes = {
+  addtoCart: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
