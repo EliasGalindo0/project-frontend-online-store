@@ -41,7 +41,7 @@ export default class ProductDetails extends React.Component {
     console.log(this.props);
     const estado = this.state;
     const { title, thumbnail, price, attributes } = estado.productDetails;
-    const { detailsLoaded, cart2, productDetails, titleAndId } = this.state;
+    const { detailsLoaded, cart2, titleAndId } = this.state;
     // console.log(productDetails);
     const { addtoCart } = this.props;
     return (
@@ -86,3 +86,8 @@ export default class ProductDetails extends React.Component {
     );
   }
 }
+
+ProductDetails.propTypes = {
+  match: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+  addtoCart: PropTypes.func.isRequired,
+};

@@ -5,11 +5,8 @@ import CartItem from './CartItem';
 
 export default class Shoppingcart extends React.Component {
   render() {
-    // const { shoppingCartList } = this.state;
     const { productDetailsList } = this.props;
-    // console.log(shoppingCartList.map((item) => item));
-    // console.log(shoppingCartList);
-    // console.log(productDetailsList);
+
     return (
 
       <div>
@@ -26,21 +23,6 @@ export default class Shoppingcart extends React.Component {
   }
 }
 
-// {shoppingCartList.map((item) => (
-//   <p
-//     data-testid="shopping-cart-product-name"
-//     key={ item.id }
-//     quantity={ qt }
-//   >
-//     Nome:
-//     {item.title}
-//     Quantidade:
-//     {qt}
-//   </p>
-// ))}
-
 Shoppingcart.propTypes = {
   productDetailsList: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  cart: PropTypes.number.isRequired,
-
 };

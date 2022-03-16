@@ -71,3 +71,11 @@ export default class CartItem extends React.Component {
     );
   }
 }
+
+CartItem.propTypes = {
+  item: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+  // title: PropTypes.string.isRequired,
+  // price: PropTypes.number.isRequired,
+  // thumbnail: PropTypes.string.isRequired,
+  // id: PropTypes.string.isRequired,
+};

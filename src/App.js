@@ -4,7 +4,6 @@ import './App.css';
 import Home from './components/Home';
 import ProductDetails from './components/ProductDetails';
 import Shoppingcart from './components/Shoppingcart';
-// import { getProductDetails } from '../services/api';
 
 export default class App extends React.Component {
   constructor() {
@@ -16,10 +15,8 @@ export default class App extends React.Component {
   }
 
   addtoCart = (event, titleAndId) => {
-    console.log("---->", titleAndId);
     const { productDetailsList } = this.state;
     const elem = productDetailsList.some((item) => titleAndId.id === item.id);
-    // console.log(elem);
     if (!elem) {
       this.setState((prevState) => ({
         cart: 1,

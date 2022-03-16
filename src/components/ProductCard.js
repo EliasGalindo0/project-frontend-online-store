@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { getProductDetails } from '../services/api';
 
 export default class ProductCard extends React.Component {
   constructor() {
     super();
     this.state = {
-      productDetails: [],
       // cart: 0,
       titleAndId: {},
     };
