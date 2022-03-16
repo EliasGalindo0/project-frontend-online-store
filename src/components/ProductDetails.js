@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getProductDetails } from '../services/api';
 
 export default class ProductDetails extends React.Component {
