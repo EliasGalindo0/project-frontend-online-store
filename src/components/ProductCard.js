@@ -8,17 +8,23 @@ export default class ProductCard extends React.Component {
     super();
     this.state = {
       productDetails: [],
-      cart: 0,
+      // cart: 0,
+      titleAndId: {},
     };
   }
 
-  async componentDidMount() {
-    const { id } = this.props;
-    // console.log(id);
-    const detailsObject = await getProductDetails(id);
+  componentDidMount() {
+    const { id, title } = this.props;
+    // const { id } = this.props;
+    // // console.log(id);
+    // const detailsObject = await getProductDetails(id);
     // console.log(detailsObject);
     this.setState({
-      productDetails: detailsObject,
+      // productDetails: detailsObject,
+      titleAndId: {
+        id,
+        title,
+      },
     });
   }
 
@@ -29,7 +35,7 @@ export default class ProductCard extends React.Component {
       id,
       addtoCart } = this.props;
 
-    const { productDetails, cart } = this.state;
+    const { titleAndId } = this.state;
     // console.log(addtoCart);
     return (
       <div data-testid="product" className="product-card-container">
@@ -42,7 +48,7 @@ export default class ProductCard extends React.Component {
           // value={ produto.title } // botão que adiciona item no carrinho
           data-testid="product-add-to-cart"
           type="button"
-          onClick={ (event) => { addtoCart(event, productDetails, cart); } }
+          onClick={ (event) => { addtoCart(event, titleAndId); } }
         >
           Adicionar no carrinho
         </button>

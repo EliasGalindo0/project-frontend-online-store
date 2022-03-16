@@ -9,7 +9,7 @@ export default class Shoppingcart extends React.Component {
     const { productDetailsList } = this.props;
     // console.log(shoppingCartList.map((item) => item));
     // console.log(shoppingCartList);
-    console.log(productDetailsList);
+    // console.log(productDetailsList);
     return (
 
       <div>

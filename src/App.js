@@ -15,15 +15,15 @@ export default class App extends React.Component {
     };
   }
 
-  addtoCart = (event, detailsObject) => {
-    // console.log(detailsObject);
+  addtoCart = (event, titleAndId) => {
+    console.log("---->", titleAndId);
     const { productDetailsList } = this.state;
-    const elem = productDetailsList.some((item) => detailsObject.id === item.id);
+    const elem = productDetailsList.some((item) => titleAndId.id === item.id);
     // console.log(elem);
     if (!elem) {
       this.setState((prevState) => ({
         cart: 1,
-        productDetailsList: [...prevState.productDetailsList, detailsObject],
+        productDetailsList: [...prevState.productDetailsList, titleAndId],
       }));
     }
   }
