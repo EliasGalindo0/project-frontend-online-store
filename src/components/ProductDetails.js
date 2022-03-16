@@ -8,7 +8,8 @@ export default class ProductDetails extends React.Component {
     this.state = {
       productDetails: [],
       detailsLoaded: false,
-      cart2: 0,
+      titleAndId: {},
+      // cart2: 0,
       // cart: 0,
     };
   }
@@ -21,6 +22,10 @@ export default class ProductDetails extends React.Component {
     // console.log(detailsObject);
     this.setState({
       productDetails: detailsObject,
+      titleAndId: {
+        id: detailsObject.id,
+        title: detailsObject.title,
+      },
       detailsLoaded: true,
     });
   }
@@ -33,9 +38,10 @@ export default class ProductDetails extends React.Component {
   // }
 
   render() {
+    console.log(this.props);
     const estado = this.state;
     const { title, thumbnail, price, attributes } = estado.productDetails;
-    const { detailsLoaded, cart2, productDetails } = this.state;
+    const { detailsLoaded, cart2, titleAndId } = this.state;
     // console.log(productDetails);
     const { addtoCart } = this.props;
     return (
@@ -71,7 +77,7 @@ export default class ProductDetails extends React.Component {
               <button
                 type="button"
                 data-testid="product-detail-add-to-cart"
-                onClick={ (event) => { addtoCart(event, productDetails, cart2); } }
+                onClick={ (event) => { addtoCart(event, titleAndId, cart2); } }
               >
                 Add to cart
               </button>
@@ -80,3 +86,8 @@ export default class ProductDetails extends React.Component {
     );
   }
 }
+
+ProductDetails.propTypes = {
+  match: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+  addtoCart: PropTypes.func.isRequired,
+};

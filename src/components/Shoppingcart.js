@@ -1,60 +1,28 @@
 import React from 'react';
+// import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import CartItem from './CartItem';
 
 export default class Shoppingcart extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      shoppingCartList: [],
-      qt: 0,
-    };
-  }
-
-  componentDidMount() {
-    const { productDetailsList, cart } = this.props;
-    this.setState({
-      shoppingCartList: productDetailsList,
-      qt: cart,
-    });
-  }
-
   render() {
-    const { shoppingCartList, qt } = this.state;
-    // console.log(shoppingCartList.map((item) => item));
+    const { productDetailsList } = this.props;
+
     return (
-      // colocar um length array se for 0 mostrar texto vazio
+
       <div>
-        <div>
-          {shoppingCartList.map((item) => (
-            <div key={ item.id }>
-              <p
-                data-testid="shopping-cart-product-name"
-                quantity={ qt }
-              >
-                Nome:
-                {item.title}
-              </p>
-              <p data-testid="shopping-cart-product-quantity">
-                Quantidade:
-                {qt}
-              </p>
-            </div>
-          ))}
-        </div>
-        <h1 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h1>
+        { productDetailsList.length === 0 ? (
+          <h1 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h1>
+        ) : (
+          <div>
+            {productDetailsList.map((item) => (
+              <CartItem key={ item.id } item={ item } />
+            ))}
+          </div>)}
       </div>
     );
   }
 }
 
-// {shoppingCartList.map((item) => (
-//   <p
-//     data-testid="shopping-cart-product-name"
-//     key={ item.id }
-//     quantity={ qt }
-//   >
-//     Nome:
-//     {item.title}
-//     Quantidade:
-//     {qt}
-//   </p>
-// ))}
+Shoppingcart.propTypes = {
+  productDetailsList: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+};

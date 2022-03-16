@@ -14,27 +14,20 @@ export default class App extends React.Component {
     };
   }
 
-  addtoCart = (event, detailsObject) => {
-    console.log(detailsObject);
+  addtoCart = (event, titleAndId) => {
     const { productDetailsList } = this.state;
-    const elem = productDetailsList.some((item) => detailsObject.id === item.id);
-    console.log(elem);
+    const elem = productDetailsList.some((item) => titleAndId.id === item.id);
     if (!elem) {
       this.setState((prevState) => ({
         cart: 1,
-        productDetailsList: [...prevState.productDetailsList, detailsObject],
+        productDetailsList: [...prevState.productDetailsList, titleAndId],
       }));
     }
-    //  else {
-    //   this.setState((prevState) => ({
-    //     cart2: prevState.cart2 + 1,
-    //   }));
-    // }
   }
 
   render() {
-    const { title, cart, productDetailsList } = this.state;
-    console.log(cart);
+    const { cart, productDetailsList } = this.state;
+    // console.log(cart);
     // console.log(cart);
     return (
       <BrowserRouter>
